@@ -16,121 +16,187 @@ import parentView from '@/components/parent-view'
  * }
  */
 
-export default [
-  {
-    path: '/login',
-    name: 'login',
-    meta: {
-      title: 'Login - 登录',
-      hideInMenu: true
-    },
-    component: () => import('@/view/login/login.vue')
+export default [{
+  path: '/login',
+  name: 'login',
+  meta: {
+    title: 'Login - 登录',
+    hideInMenu: true
   },
-  {
-    path: '/',
-    name: '_home',
-    redirect: '/home',
-    component: Main,
+  component: () => import('@/views/login/login.vue')
+}, {
+  path: '/',
+  name: '_home',
+  redirect: '/home',
+  component: Main,
+  meta: {
+    hideInMenu: true,
+    notCache: true
+  },
+  children: [{
+    path: '/home',
+    name: 'home',
     meta: {
       hideInMenu: true,
-      notCache: true
+      title: '首页',
+      notCache: true,
+      icon: 'md-home'
     },
-    children: [
-      {
-        path: '/home',
-        name: 'home',
-        meta: {
-          hideInMenu: true,
-          title: '首页',
-          notCache: true,
-          icon: 'md-home'
-        },
-        component: () => import('@/view/single-page/home')
-      }
-    ]
-  },
-  {
-    path: '',
-    name: 'doc',
-    meta: {
-      title: '文档',
-      href: 'https://lison16.github.io/iview-admin-doc/#/',
-      icon: 'ios-book'
-    }
-  },
-  {
-    path: '/multilevel',
-    name: 'multilevel',
-    meta: {
-      icon: 'md-menu',
-      title: '多级菜单'
-    },
-    component: Main,
-    children: [
-      {
-        path: 'level_2_1',
-        name: 'level_2_1',
-        meta: {
-          icon: 'md-funnel',
-          title: '二级-1'
-        },
-        component: () => import('@/view/multilevel/level-2-1.vue')
-      },
-      {
-        path: 'level_2_2',
-        name: 'level_2_2',
-        meta: {
-          access: ['super_admin'],
-          icon: 'md-funnel',
-          showAlways: true,
-          title: '二级-2'
-        },
-        component: parentView,
-        children: [
-          {
-            path: 'level_2_2_1',
-            name: 'level_2_2_1',
-            meta: {
-              icon: 'md-funnel',
-              title: '三级'
-            },
-            component: () => import('@/view/multilevel/level-2-2/level-3-1.vue')
-          }
-        ]
-      },
-      {
-        path: 'level_2_3',
-        name: 'level_2_3',
-        meta: {
-          icon: 'md-funnel',
-          title: '二级-3'
-        },
-        component: () => import('@/view/multilevel/level-2-3.vue')
-      }
-    ]
-  },
-  {
-    path: '/401',
-    name: 'error_401',
-    meta: {
-      hideInMenu: true
-    },
-    component: () => import('@/view/error-page/401.vue')
-  },
-  {
-    path: '/500',
-    name: 'error_500',
-    meta: {
-      hideInMenu: true
-    },
-    component: () => import('@/view/error-page/500.vue')
-  },
-  {
-    path: '*',
-    name: 'error_404',
-    meta: {
-      hideInMenu: true
-    },
-    component: () => import('@/view/error-page/404.vue')
+    component: () => import('@/views/home')
+  }]
+}, {
+  path: '',
+  name: 'doc',
+  meta: {
+    title: 'iView文档',
+    href: 'https://iviewui.com/docs/guide/install',
+    icon: 'ios-book'
   }
-]
+}, {
+  path: '',
+  name: 'permission',
+  component: Main,
+  meta: {
+    icon: 'md-transgender',
+    title: '权限管理'
+  },
+  children: [{
+      path: '/identity',
+      name: 'identity',
+      component: parentView,
+      meta: {
+        icon: 'md-key',
+        title: '身份认证'
+      },
+      children: [{
+        path: '/user',
+        name: 'user',
+        component: () => import('@/views/identity/user.vue'),
+        meta: {
+          icon: 'md-person',
+          title: '用户管理'
+        }
+      }, {
+        path: '/role',
+        name: 'role',
+        component: () => import('@/views/identity/role.vue'),
+        meta: {
+          icon: 'md-people',
+          title: '角色管理'
+        }
+      }, {
+        path: '/user-role',
+        name: 'user-role',
+        component: () => import('@/views/identity/user-role.vue'),
+        meta: {
+          icon: 'ios-people',
+          title: '用户角色管理'
+        }
+      }]
+    },
+    {
+      path: '/security',
+      name: 'security',
+      component: parentView,
+      meta: {
+        icon: 'ios-lock',
+        title: '权限安全'
+      },
+      children: [{
+        path: '/module',
+        name: 'module',
+        component: () => import('@/views/security/module.vue'),
+        meta: {
+          icon: 'ios-people',
+          title: '模块管理'
+        }
+      }, {
+        path: '/function',
+        name: 'function',
+        component: () => import('@/views/security/function.vue'),
+        meta: {
+          icon: 'ios-people',
+          title: '功能管理'
+        }
+      }, {
+        path: '/role-function',
+        name: 'role-function',
+        component: () => import('@/views/security/role-function.vue'),
+        meta: {
+          icon: 'ios-people',
+          title: '角色功能管理'
+        }
+      }, {
+        path: '/user-function',
+        name: 'user-function',
+        component: () => import('@/views/security/user-function.vue'),
+        meta: {
+          icon: 'ios-people',
+          title: '用户功能管理'
+        }
+      }, {
+        path: '/entityinfo',
+        name: 'entityinfo',
+        component: () => import('@/views/security/entityinfo.vue'),
+        meta: {
+          icon: 'ios-people',
+          title: '数据实体管理'
+        }
+      }, {
+        path: '/role-entityinfo',
+        name: 'role-entityinfo',
+        component: () => import('@/views/security/role-entityinfo.vue'),
+        meta: {
+          icon: 'ios-people',
+          title: '角色数据管理'
+        }
+      }, {
+        path: '/user-entityinfo',
+        name: 'user-entityinfo',
+        component: () => import('@/views/security/user-entityinfo.vue'),
+        meta: {
+          icon: 'ios-people',
+          title: '用户数据管理'
+        }
+      }]
+    }
+  ]
+}, {
+  path: '/systems',
+  name: 'systems',
+  component: Main,
+  meta: {
+    icon: 'md-desktop',
+    title: '系统管理'
+  },
+  children: [{
+    path: '/settings',
+    name: 'settings',
+    component: () => import('@/views/systems/settings.vue'),
+    meta: {
+      icon: 'md-settings',
+      title: '系统设置'
+    }
+  }]
+}, {
+  path: '/401',
+  name: 'error_401',
+  meta: {
+    hideInMenu: true
+  },
+  component: () => import('@/views/error-page/401.vue')
+}, {
+  path: '/500',
+  name: 'error_500',
+  meta: {
+    hideInMenu: true
+  },
+  component: () => import('@/views/error-page/500.vue')
+}, {
+  path: '*',
+  name: 'error_404',
+  meta: {
+    hideInMenu: true
+  },
+  component: () => import('@/views/error-page/404.vue')
+}]

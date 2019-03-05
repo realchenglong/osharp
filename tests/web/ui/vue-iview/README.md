@@ -101,13 +101,13 @@ npm run build
         └── images  图片资源
     ├── components  业务组件
     ├── config  项目运行配置
-    ├── directive  自定义指令
+    ├── directives  自定义指令
     ├── libs  封装工具函数
     ├── locale  多语言文件
     ├── mock  mock模拟数据
     ├── router  路由配置
     ├── store  Vuex配置
-    ├── view  页面文件
+    ├── views  页面文件
     └── tests  测试相关
 ```
 
