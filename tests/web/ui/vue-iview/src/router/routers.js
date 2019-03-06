@@ -25,7 +25,7 @@ export default [{
   },
   component: () => import('@/views/login/login.vue')
 }, {
-  path: '/',
+  path: '',
   name: '_home',
   redirect: '/home',
   component: Main,
@@ -45,7 +45,7 @@ export default [{
     component: () => import('@/views/home')
   }]
 }, {
-  path: '',
+  path: '/',
   name: 'doc',
   meta: {
     title: 'iView文档',
@@ -61,106 +61,104 @@ export default [{
     title: '权限管理'
   },
   children: [{
-      path: '/identity',
-      name: 'identity',
-      component: parentView,
-      meta: {
-        icon: 'md-key',
-        title: '身份认证'
-      },
-      children: [{
-        path: '/user',
-        name: 'user',
-        component: () => import('@/views/identity/user.vue'),
-        meta: {
-          icon: 'md-person',
-          title: '用户管理'
-        }
-      }, {
-        path: '/role',
-        name: 'role',
-        component: () => import('@/views/identity/role.vue'),
-        meta: {
-          icon: 'md-people',
-          title: '角色管理'
-        }
-      }, {
-        path: '/user-role',
-        name: 'user-role',
-        component: () => import('@/views/identity/user-role.vue'),
-        meta: {
-          icon: 'ios-people',
-          title: '用户角色管理'
-        }
-      }]
+    path: '/identity',
+    name: 'identity',
+    component: parentView,
+    meta: {
+      icon: 'md-key',
+      title: '身份认证'
     },
-    {
-      path: '/security',
-      name: 'security',
-      component: parentView,
+    children: [{
+      path: 'user',
+      name: 'user',
+      component: () => import('@/views/identity/user.vue'),
       meta: {
-        icon: 'ios-lock',
-        title: '权限安全'
-      },
-      children: [{
-        path: '/module',
-        name: 'module',
-        component: () => import('@/views/security/module.vue'),
-        meta: {
-          icon: 'ios-people',
-          title: '模块管理'
-        }
-      }, {
-        path: '/function',
-        name: 'function',
-        component: () => import('@/views/security/function.vue'),
-        meta: {
-          icon: 'ios-people',
-          title: '功能管理'
-        }
-      }, {
-        path: '/role-function',
-        name: 'role-function',
-        component: () => import('@/views/security/role-function.vue'),
-        meta: {
-          icon: 'ios-people',
-          title: '角色功能管理'
-        }
-      }, {
-        path: '/user-function',
-        name: 'user-function',
-        component: () => import('@/views/security/user-function.vue'),
-        meta: {
-          icon: 'ios-people',
-          title: '用户功能管理'
-        }
-      }, {
-        path: '/entityinfo',
-        name: 'entityinfo',
-        component: () => import('@/views/security/entityinfo.vue'),
-        meta: {
-          icon: 'ios-people',
-          title: '数据实体管理'
-        }
-      }, {
-        path: '/role-entityinfo',
-        name: 'role-entityinfo',
-        component: () => import('@/views/security/role-entityinfo.vue'),
-        meta: {
-          icon: 'ios-people',
-          title: '角色数据管理'
-        }
-      }, {
-        path: '/user-entityinfo',
-        name: 'user-entityinfo',
-        component: () => import('@/views/security/user-entityinfo.vue'),
-        meta: {
-          icon: 'ios-people',
-          title: '用户数据管理'
-        }
-      }]
-    }
-  ]
+        icon: 'md-person',
+        title: '用户管理'
+      }
+    }, {
+      path: 'role',
+      name: 'role',
+      component: () => import('@/views/identity/role.vue'),
+      meta: {
+        icon: 'md-people',
+        title: '角色管理'
+      }
+    }, {
+      path: 'user-role',
+      name: 'user-role',
+      component: () => import('@/views/identity/user-role.vue'),
+      meta: {
+        icon: 'ios-people',
+        title: '用户角色管理'
+      }
+    }]
+  }, {
+    path: '/security',
+    name: 'security',
+    component: parentView,
+    meta: {
+      icon: 'ios-lock',
+      title: '权限安全'
+    },
+    children: [{
+      path: 'module',
+      name: 'module',
+      component: () => import('@/views/security/module.vue'),
+      meta: {
+        icon: 'ios-people',
+        title: '模块管理'
+      }
+    }, {
+      path: 'function',
+      name: 'function',
+      component: () => import('@/views/security/function.vue'),
+      meta: {
+        icon: 'ios-people',
+        title: '功能管理'
+      }
+    }, {
+      path: 'role-function',
+      name: 'role-function',
+      component: () => import('@/views/security/role-function.vue'),
+      meta: {
+        icon: 'ios-people',
+        title: '角色功能管理'
+      }
+    }, {
+      path: 'user-function',
+      name: 'user-function',
+      component: () => import('@/views/security/user-function.vue'),
+      meta: {
+        icon: 'ios-people',
+        title: '用户功能管理'
+      }
+    }, {
+      path: 'entityinfo',
+      name: 'entityinfo',
+      component: () => import('@/views/security/entityinfo.vue'),
+      meta: {
+        icon: 'ios-people',
+        title: '数据实体管理'
+      }
+    }, {
+      path: 'role-entityinfo',
+      name: 'role-entityinfo',
+      component: () => import('@/views/security/role-entityinfo.vue'),
+      meta: {
+        icon: 'ios-people',
+        title: '角色数据管理'
+      }
+    }, {
+      path: 'user-entityinfo',
+      name: 'user-entityinfo',
+      component: () => import('@/views/security/user-entityinfo.vue'),
+      meta: {
+        icon: 'ios-people',
+        title: '用户数据管理'
+      }
+    }]
+  }]
 }, {
   path: '/systems',
   name: 'systems',
@@ -170,12 +168,36 @@ export default [{
     title: '系统管理'
   },
   children: [{
-    path: '/settings',
+    path: 'settings',
     name: 'settings',
     component: () => import('@/views/systems/settings.vue'),
     meta: {
       icon: 'md-settings',
       title: '系统设置'
+    }
+  }, {
+    path: 'audit-operation',
+    name: 'audit-operation',
+    component: () => import('@/views/systems/audit-operation.vue'),
+    meta: {
+      icon: 'md-settings',
+      title: '操作审计'
+    }
+  }, {
+    path: 'audit-entity',
+    name: 'audit-entity',
+    component: () => import('@/views/systems/audit-entity.vue'),
+    meta: {
+      icon: 'md-settings',
+      title: '数据审计'
+    }
+  }, {
+    path: 'pack',
+    name: 'pack',
+    component: () => import('@/views/systems/pack.vue'),
+    meta: {
+      icon: 'md-settings',
+      title: '模块包'
     }
   }]
 }, {
