@@ -360,7 +360,7 @@ namespace OSharp.Properties {
         /// <summary>
         ///   查找类似 参数“{0}”不能为空引用或空字符串。 的本地化字符串。
         /// </summary>
-        internal static string ParameterCheck_NotNullOrEmpty_String {
+        internal static string ParameterCheck_NotNullOrEmpty_String { 
             get {
                 return ResourceManager.GetString("ParameterCheck_NotNullOrEmpty_String", resourceCulture);
             }
